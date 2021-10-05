@@ -5,7 +5,7 @@ const ProgramLoss = () => {
   return (
     <>
       <Wrapper>
-        <Title>Muscle gain program</Title>
+        <Title>Weight loss program</Title>
         <Day>Day 1</Day>
         <SecondWrapper>
           <div>
