@@ -2,9 +2,18 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ExerciseImg from "../images/exercise.jpg";
 import Header from "./Header";
+import { useHistory } from "react-router";
 
 const Exercises = () => {
   const [exercises, setExercises] = useState(null);
+  const [selectedProgram, setSelectedProgram] = useState(
+    JSON.parse(window.localStorage.getItem("program"))
+  );
+
+  // let selectedProgram = JSON.parse(window.localStorage.getItem("program"));
+  let programExercises = selectedProgram.exercises;
+
+  let history = useHistory();
 
   useEffect(() => {
     const arrayOfPromises = [
@@ -25,21 +34,47 @@ const Exercises = () => {
   const shouldersExercises = (exercises && exercises[2].slice(0, 6)) || [];
   const legsExercises = (exercises && exercises[3].slice(10, 16)) || [];
 
+  // const pushToProgram = () => {
+  //   history.push({
+  //     pathname: "/program",
+  //     state: ,
+  //   });
+  // }
+
   return (
     <>
       <Wrapper>
+        {/*TODO: Add onClick to other body part exercises  */}
         <Header />
         <Title>Back - Exercises</Title>
         <ImageWrapper>
           {backExercises.map((exercise) => {
             return (
-              <BoxWrap>
+              <BoxWrap
+                onClick={() => {
+                  selectedProgram.exercises.unshift(exercise.name);
+
+                  if (selectedProgram.exercises.length > 12) {
+                    selectedProgram.exercises.pop();
+                    window.localStorage.setItem(
+                      "program",
+                      JSON.stringify(selectedProgram)
+                    );
+                  } else {
+                    window.localStorage.setItem(
+                      "program",
+                      JSON.stringify(selectedProgram)
+                    );
+                  }
+                }}
+              >
                 <img src={exercise.gifUrl} width="200" />
                 <p>{exercise.name}</p>
               </BoxWrap>
             );
           })}
         </ImageWrapper>
+
         <Title>Chest - Exercises</Title>
         <ImageWrapper>
           {chestExercises.map((exercise) => {

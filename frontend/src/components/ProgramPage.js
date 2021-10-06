@@ -7,16 +7,19 @@ import ProgramLoss from "./ProgramLoss";
 import { useHistory } from "react-router";
 
 const ProgramPage = () => {
-  let history = useHistory();
-  const getProgramPage = (programType) => {
-    console.log(programType);
-    if (programType) return <ProgramGain />;
+  const [program, setIsFatLoss] = useState(
+    JSON.parse(window.localStorage.getItem("program"))
+  );
+
+  //TODO: Check if program is null, display empty page
+  const getProgramPage = () => {
+    if (program.type) return <ProgramGain />;
     else return <ProgramLoss />;
   };
   return (
     <Wrapper>
       <Header />
-      {getProgramPage(history.location.state)}
+      {getProgramPage()}
     </Wrapper>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router";
+import localStorage from "local-storage";
 
 const Form = () => {
   const [weight, setWeight] = useState(0);
@@ -11,13 +12,19 @@ const Form = () => {
 
   let history = useHistory();
 
+  let programObject = {
+    type: false,
+    exercises: [],
+  };
+
   const getProgram = (event) => {
     if (gender == "male") {
       if (bodyFat < 30) {
         if (age < 17 || age > 70) {
+          programObject.type = true;
+          window.localStorage.setItem("program", JSON.stringify(programObject));
           history.push({
             pathname: "/program",
-            state: true,
           });
           // console.log("Program Gain")
         } else {
@@ -170,7 +177,7 @@ const Form = () => {
           </CheckBox>
         </div>
         <RegisterDiv>
-          <button onClick={getProgram}>Register</button>
+            <button onClick={getProgram}>Register</button>
         </RegisterDiv>
       </Wrapper>
     </>
