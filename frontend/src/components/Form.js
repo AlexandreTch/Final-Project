@@ -29,15 +29,17 @@ const Form = () => {
           // console.log("Program Gain")
         } else {
           if (height < 6) {
+            programObject.type = false;
+            window.localStorage.setItem("program", JSON.stringify(programObject));
             history.push({
               pathname: "/program",
-              state: false,
             });
             // console.log("Lose Fat");
           } else {
+            programObject.type = true;
+            window.localStorage.setItem("program", JSON.stringify(programObject));
             history.push({
               pathname: "/program",
-              state: true,
             });
             // console.log("Program Gain");
           }
@@ -45,15 +47,17 @@ const Form = () => {
       } else {
         if (bodyFat >= 30) {
           if (age < 17 || age > 70) {
+            programObject.type = true;
+            window.localStorage.setItem("program", JSON.stringify(programObject));
             history.push({
               pathname: "/program",
-              state: true,
             });
             // console.log("Program Gain");
           } else {
+            programObject.type = false;
+            window.localStorage.setItem("program", JSON.stringify(programObject));
             history.push({
               pathname: "/program",
-              state: false,
             });
             // console.log("Lose Fat");
           }
@@ -63,27 +67,25 @@ const Form = () => {
       if (gender == "female") {
         if (bodyFat < 35) {
           if (age < 17 || age > 70) {
+            programObject.type = true;
+            window.localStorage.setItem("program", JSON.stringify(programObject));
             history.push({
               pathname: "/program",
-              state: true,
             });
             // console.log("Program Gain");
           } else {
             if (height < 6) {
+              programObject.type = false;
+              window.localStorage.setItem("program", JSON.stringify(programObject));
               history.push({
                 pathname: "/program",
-                state: false,
               });
               // console.log("Lose Fat");
-
-              //       history.push({
-              //         pathname: "/program",
-              //         state: { program: false },
-              //       });
             } else {
+              programObject.type = true;
+              window.localStorage.setItem("program", JSON.stringify(programObject));
               history.push({
                 pathname: "/program",
-                state: true,
               });
               // console.log("Program Gain");
             }
@@ -91,15 +93,17 @@ const Form = () => {
         } else {
           if (bodyFat >= 35) {
             if (age < 17 || age > 70) {
+              programObject.type = true;
+              window.localStorage.setItem("program", JSON.stringify(programObject));
               history.push({
                 pathname: "/program",
-                state: true,
               });
               // console.log("Program Gain");
             } else {
+              programObject.type = false;
+              window.localStorage.setItem("program", JSON.stringify(programObject));
               history.push({
                 pathname: "/program",
-                state: false,
               });
               // console.log("Lose Fat");
             }

@@ -8,6 +8,7 @@ import GlobalStyles from './components/GlobalStyles';
 import NoteList from './components/NoteList';
 import { nanoid } from 'nanoid'
 import { MdNotAccessible } from 'react-icons/md';
+import Register from './components/Register';
 
 
 const App = () => {
@@ -59,6 +60,7 @@ const deleteNote = (id) => {
         handleDeleteNote={deleteNote}
         /> </Route>
         <Route exact path='/login'> <Login /> </Route>
+        <Route exact path='/register'> <Register /> </Route>
       </Switch>
     </BrowserRouter>
   )

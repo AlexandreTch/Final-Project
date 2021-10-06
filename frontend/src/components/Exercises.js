@@ -11,7 +11,9 @@ const Exercises = () => {
   );
 
   // let selectedProgram = JSON.parse(window.localStorage.getItem("program"));
-  let programExercises = selectedProgram.exercises;
+  if (selectedProgram != null) {
+    let programExercises = selectedProgram.exercises;
+  };
 
   let history = useHistory();
 
@@ -33,85 +35,151 @@ const Exercises = () => {
   const chestExercises = (exercises && exercises[1].slice(0, 6)) || [];
   const shouldersExercises = (exercises && exercises[2].slice(0, 6)) || [];
   const legsExercises = (exercises && exercises[3].slice(10, 16)) || [];
+  {
+    if (selectedProgram == null) {
+      return (
+        <Wrapper>
+          <Header />
+          <Div>
+            <H1>Fill out form for program!!!</H1>
+          </Div>
+        </Wrapper>
+      );
+    } else {
+      return (
+        <>
+          <Wrapper>
+            <Header />
+            <Title>Back - Exercises</Title>
+            <ImageWrapper>
+              {backExercises.map((exercise) => {
+                return (
+                  <BoxWrap
+                    onClick={() => {
+                      selectedProgram.exercises.unshift(exercise.name);
 
-  // const pushToProgram = () => {
-  //   history.push({
-  //     pathname: "/program",
-  //     state: ,
-  //   });
-  // }
+                      if (selectedProgram.exercises.length > 12) {
+                        selectedProgram.exercises.pop();
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      } else {
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      }
+                    }}
+                  >
+                    <img src={exercise.gifUrl} width="200" />
+                    <p>{exercise.name}</p>
+                  </BoxWrap>
+                );
+              })}
+            </ImageWrapper>
 
-  return (
-    <>
-      <Wrapper>
-        {/*TODO: Add onClick to other body part exercises  */}
-        <Header />
-        <Title>Back - Exercises</Title>
-        <ImageWrapper>
-          {backExercises.map((exercise) => {
-            return (
-              <BoxWrap
-                onClick={() => {
-                  selectedProgram.exercises.unshift(exercise.name);
+            <Title>Chest - Exercises</Title>
+            <ImageWrapper>
+              {chestExercises.map((exercise) => {
+                return (
+                  <BoxWrap
+                    onClick={() => {
+                      selectedProgram.exercises.unshift(exercise.name);
 
-                  if (selectedProgram.exercises.length > 12) {
-                    selectedProgram.exercises.pop();
-                    window.localStorage.setItem(
-                      "program",
-                      JSON.stringify(selectedProgram)
-                    );
-                  } else {
-                    window.localStorage.setItem(
-                      "program",
-                      JSON.stringify(selectedProgram)
-                    );
-                  }
-                }}
-              >
-                <img src={exercise.gifUrl} width="200" />
-                <p>{exercise.name}</p>
-              </BoxWrap>
-            );
-          })}
-        </ImageWrapper>
+                      if (selectedProgram.exercises.length > 12) {
+                        selectedProgram.exercises.pop();
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      } else {
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      }
+                    }}
+                  >
+                    <img src={exercise.gifUrl} width="200" />
+                    <p>{exercise.name}</p>
+                  </BoxWrap>
+                );
+              })}
+            </ImageWrapper>
+            <Title>Shoulders - Exercises</Title>
+            <ImageWrapper>
+              {shouldersExercises.map((exercise) => {
+                return (
+                  <BoxWrap
+                    onClick={() => {
+                      selectedProgram.exercises.unshift(exercise.name);
 
-        <Title>Chest - Exercises</Title>
-        <ImageWrapper>
-          {chestExercises.map((exercise) => {
-            return (
-              <BoxWrap>
-                <img src={exercise.gifUrl} width="200" />
-                <p>{exercise.name}</p>
-              </BoxWrap>
-            );
-          })}
-        </ImageWrapper>
-        <Title>Shoulders - Exercises</Title>
-        <ImageWrapper>
-          {shouldersExercises.map((exercise) => {
-            return (
-              <BoxWrap>
-                <img src={exercise.gifUrl} width="200" />
-                <p>{exercise.name}</p>
-              </BoxWrap>
-            );
-          })}
-        </ImageWrapper>
-        <Title>Legs - Exercises</Title>
-        <ImageWrapper>
-          {legsExercises.map((exercise) => {
-            return (
-              <BoxWrap>
-                <img src={exercise.gifUrl} width="200" />
-                <p>{exercise.name}</p>
-              </BoxWrap>
-            );
-          })}
-        </ImageWrapper>
-      </Wrapper>
-    </>
-  );
+                      if (selectedProgram.exercises.length > 12) {
+                        selectedProgram.exercises.pop();
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      } else {
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      }
+                    }}
+                  >
+                    <img src={exercise.gifUrl} width="200" />
+                    <p>{exercise.name}</p>
+                  </BoxWrap>
+                );
+              })}
+            </ImageWrapper>
+            <Title>Legs - Exercises</Title>
+            <ImageWrapper>
+              {legsExercises.map((exercise) => {
+                return (
+                  <BoxWrap
+                    onClick={() => {
+                      selectedProgram.exercises.unshift(exercise.name);
+
+                      if (selectedProgram.exercises.length > 12) {
+                        selectedProgram.exercises.pop();
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      } else {
+                        window.localStorage.setItem(
+                          "program",
+                          JSON.stringify(selectedProgram)
+                        );
+                      }
+                    }}
+                  >
+                    <img src={exercise.gifUrl} width="200" />
+                    <p>{exercise.name}</p>
+                  </BoxWrap>
+                );
+              })}
+            </ImageWrapper>
+          </Wrapper>
+        </>
+      );
+    }
+  }
 };
+
+const H1 = styled.h1`
+  text-shadow: 2px 2px black;
+  font-size: 100px;
+  color: red;
+`;
+
+const Div = styled.div`
+  max-width: 1000px;
+  margin: auto;
+`;
 
 const BoxWrap = styled.div`
   display: flex;

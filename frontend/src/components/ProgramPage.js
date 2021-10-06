@@ -16,13 +16,36 @@ const ProgramPage = () => {
     if (program.type) return <ProgramGain />;
     else return <ProgramLoss />;
   };
-  return (
-    <Wrapper>
+  {if(program == null){
+    return(
+      <Wrapper>
+       <Header />
+       <Div>
+         <H1>Fill out form for program!!!</H1>
+       </Div>
+      </Wrapper>
+    )
+  }
+
+    return (
+      <Wrapper>
       <Header />
       {getProgramPage()}
     </Wrapper>
   );
+}
 };
+
+const H1 = styled.h1`
+    text-shadow: 2px 2px black;
+    font-size: 100px;
+    color: red;
+`
+
+const Div = styled.div`
+  max-width: 1000px;
+  margin: auto;
+`
 
 const Wrapper = styled.div`
   width: 100%;
