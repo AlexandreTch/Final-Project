@@ -4,14 +4,12 @@ import NotesImg from "../images/notes.jpg";
 import Header from "./Header";
 import Note from "./Note";
 import AddNote from "./AddNote";
-import Search from "./Search";
 
 const NoteList = ({ notes, handleAddNote, handleDeleteNote }) => {
   return (
     <Wrapper>
       <Header />
       <Container>
-          <Search />
         <NoteWrapper>
           {notes.map((note) => (
             <Note
@@ -44,7 +42,7 @@ const NoteWrapper = styled.div`
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 2000px;
+  height: 1200px;
   background-image: url(${NotesImg});
   background-size: cover;
   background-position: center;

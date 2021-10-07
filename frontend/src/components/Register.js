@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import RegisterImg from "../images/register.jpg";
 import Header from "./Header";
+import { useHistory } from "react-router";
 
 const Register = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
+
+  let history = useHistory();
 
   const registerUser = () => {
     let userObject = {
@@ -15,6 +18,10 @@ const Register = () => {
       program: "",
       loggedIn: false,
     };
+
+    history.push({
+      pathname: "/",
+    });
 
     if (confirmPassword != null) {
       if (password === confirmPassword) {

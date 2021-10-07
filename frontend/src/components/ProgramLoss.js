@@ -11,9 +11,9 @@ const ProgramLoss = () => {
       return (
         <tr key={exercise}>
           <td>{exercise}</td>
-          <td>{3}</td>
-          <td>4-6</td>
-          <td>{2}</td>
+          <td>4-4</td>
+          <td>12-15</td>
+          <td>1</td>
         </tr>
       );
     });
@@ -59,24 +59,14 @@ const Th = styled.th`
 `;
 const Thb = styled.th`
   color: white;
-  padding: 15px;
+  padding: 5px;
+  padding-top: 12px;
   font-size: 30px;
 `;
 
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-const Day = styled.h2`
-  margin-left: 20px;
-  text-shadow: 2px 2px #ff0000;
-  font-size: 30px;
-`;
-
-const SecondWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
 `;
 
 const Title = styled.h1`

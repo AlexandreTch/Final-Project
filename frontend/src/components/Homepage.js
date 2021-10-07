@@ -5,9 +5,6 @@ import Header from "./Header";
 import Form from "./Form";
 
 const HomePage = () => {
-
-
-    
   return (
     <>
       <Wrapper>
@@ -33,7 +30,7 @@ const Text = styled.h1`
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 2000px;
+  height: 1600px;
   background-image: url(${HomeImg});
   background-size: cover;
   background-position: center;

@@ -11,14 +11,13 @@ const ProgramGain = () => {
       return (
         <tr key={exercise}>
           <td>{exercise}</td>
-          <td>{3}</td>
+          <td>2-3</td>
           <td>4-6</td>
-          <td>{2}</td>
+          <td>2</td>
         </tr>
       );
     });
   };
-
 
   return (
     <>
@@ -26,7 +25,7 @@ const ProgramGain = () => {
       <Wrapper>
         <Div>
           <DivLeft>
-           <Th>Exercise</Th>
+            <Th>Exercise</Th>
           </DivLeft>
           <DivRight>
             <Thb>Sets</Thb>
@@ -47,38 +46,28 @@ const ProgramGain = () => {
 const DivRight = styled.div`
   margin: 5px;
   text-shadow: 2px 2px #ff0000;
-`
+`;
+
 const DivLeft = styled.div`
   margin: 5px;
   padding: 12px;
   text-shadow: 2px 2px #ff0000;
-`
+`;
 
 const Th = styled.th`
   color: white;
   font-size: 30px;
-`
+`;
 const Thb = styled.th`
   color: white;
-  padding: 15px;
-  font-size: 30px;
-
-`
+  padding: 5px;
+  padding-top: 12px;
+  font-size: 25px;
+`;
 
 const Div = styled.div`
   display: flex;
   justify-content: space-between;
-`
-
-const Day = styled.h2`
-  margin-left: 20px;
-  text-shadow: 2px 2px #ff0000;
-  font-size: 30px;
-`;
-
-const SecondWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
 `;
 
 const Title = styled.h1`

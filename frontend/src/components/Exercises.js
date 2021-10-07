@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import ExerciseImg from "../images/exercise.jpg";
 import Header from "./Header";
-import { useHistory } from "react-router";
 
 const Exercises = () => {
   const [exercises, setExercises] = useState(null);
@@ -10,12 +9,9 @@ const Exercises = () => {
     JSON.parse(window.localStorage.getItem("program"))
   );
 
-  // let selectedProgram = JSON.parse(window.localStorage.getItem("program"));
   if (selectedProgram != null) {
     let programExercises = selectedProgram.exercises;
   };
-
-  let history = useHistory();
 
   useEffect(() => {
     const arrayOfPromises = [
@@ -31,18 +27,22 @@ const Exercises = () => {
     });
   }, []);
 
-  const backExercises = (exercises && exercises[0].slice(0, 6)) || [];
-  const chestExercises = (exercises && exercises[1].slice(0, 6)) || [];
-  const shouldersExercises = (exercises && exercises[2].slice(0, 6)) || [];
-  const legsExercises = (exercises && exercises[3].slice(10, 16)) || [];
+  const backExercises =
+    (exercises && exercises[0] && exercises[0].slice(0, 6)) || [];
+  const chestExercises =
+    (exercises && exercises[1] && exercises[1].slice(0, 6)) || [];
+  const shouldersExercises =
+    (exercises && exercises[2] && exercises[2].slice(0, 6)) || [];
+  const legsExercises =
+    (exercises && exercises[3] && exercises[3].slice(10, 16)) || [];
   {
     if (selectedProgram == null) {
       return (
         <Wrapper>
           <Header />
-          <Div>
+          <FillForm>
             <H1>Fill out form for program!!!</H1>
-          </Div>
+          </FillForm>
         </Wrapper>
       );
     } else {
@@ -50,7 +50,7 @@ const Exercises = () => {
         <>
           <Wrapper>
             <Header />
-            <Title>Back - Exercises</Title>
+            <Title>Back - Exercises - (12Max)</Title>
             <ImageWrapper>
               {backExercises.map((exercise) => {
                 return (
@@ -170,15 +170,17 @@ const Exercises = () => {
   }
 };
 
+const FillForm = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const H1 = styled.h1`
   text-shadow: 2px 2px black;
   font-size: 100px;
   color: red;
-`;
-
-const Div = styled.div`
-  max-width: 1000px;
-  margin: auto;
+  background-color: black;
+  padding: 15px;
 `;
 
 const BoxWrap = styled.div`
@@ -193,6 +195,7 @@ const BoxWrap = styled.div`
     transform: translate(0, -15px);
     background-color: var(--color-2);
     outline: 5px solid var(--color-2);
+    cursor: pointer;
   }
 `;
 
