@@ -62,6 +62,7 @@ const Thb = styled.th`
   color: white;
   padding: 5px;
   padding-top: 12px;
+  padding-right: 25px;
   font-size: 25px;
 `;
 

@@ -60,6 +60,7 @@ const Th = styled.th`
 const Thb = styled.th`
   color: white;
   padding: 5px;
+  padding-right: 25px;
   padding-top: 12px;
   font-size: 30px;
 `;
